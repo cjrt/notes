@@ -74,7 +74,7 @@ nav a:hover {
 
 .divider {
   height: 4px;
-  background-color: #fff;
+  background-color: #4cc9f0;
   width: 100%;
   margin: 20px 0;
   border-radius: 1px;
@@ -89,6 +89,10 @@ nav a:hover {
   text-decoration-color: #4cc9f0;
   text-underline-offset: 4%;
   text-decoration-thickness: 0.25ex;
+
+  word-wrap: break-word;  
+  overflow-wrap: break-word;  
+  max-width: 100%;
 
   color: #fff;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
