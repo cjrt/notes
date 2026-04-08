@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>articles</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@400;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="top">
+        <a href="../home.html">
+          <img src="../images/avatar.jpg" alt="me" class="avatar">
+        </a>
+      </div>
+      <div class="bottom">
+        <h1 class="page-title">cjt</h1>
+        <p class="page-paragraph">I'm Carl. I write about Mathematics, Computer Science and other things I find interesting.</p>
+        <div class="divider"></div>
+        <nav>
+          <a href="../index.html">Home</a>
+          <a href="../articles.html">Articles</a>
+          <a href="../resources.html">Resources</a>
+          <a href="https://github.com/cjrt">Github</a>
+          <a href="../about.html">About</a>
+        </nav>
+      </div>
+    </aside>
+ 
+    <main class="content">
+      <h1 class="page-title">The Chomsky Hierarchy: A Study of Language and Computational Power</h1>
+
+      <div class="divider"></div>
+
+      <h1 class="section-title">Chomsky Hierarchy</h1>
+ 
+      <p class="page-paragraph">
+        <a href="https://en.wikipedia.org/wiki/Chomsky_hierarchy">The Chomsky Hierarchy</a> was a major step toward answering a question that has been asked for thousands of years: how can we define language in a precise, mathematical way? The key idea is that the complexity of a language is directly linked to the kind of memory required to understand or process it.
+      </p>
+ 
+      <p class="page-paragraph">
+        To start us off, let's look at an example. <span class="keyword">The dog that the boy saw chased the cat.</span> Notice how the sentence is <b>nested</b>: each clause fits neatly inside another. To understand it, you only need to remember the most recent piece.
+      </p>
+ 
+      <p class="page-paragraph">
+        Now consider a Swiss German sentence like <span class="keyword">...mer em Hans es Huus hälfed aastriiche.</span> ("We helped Hans paint the house."). Here, the dependencies are <b>not nested</b> but <b>cross-serial</b>: elements earlier in the sentence correspond to multiple elements later. Understanding it requires keeping track of several relationships at once, not just the most recent one.
+      </p>
+ 
+      <a href="https://en.wikipedia.org/wiki/Cross-serial_dependencies">
+        <img src="../images/Cross-serial_dependencies.png" alt="Cross Serial Dependencies" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+      </a>
+ 
+      <p class="page-paragraph">
+        The main point is that languages differ not just in vocabulary or grammar, but in the <b>type of structure they require you to track over time</b>. Some can be processed with very limited memory, while others require unbounded memory. The Chomsky hierarchy formalizes this by classifying languages according to the computational resources needed to recognize them.
+      </p>
+
+      <h1 class="section-title">Moving up the hierarchy</h1>
+
+      <p class="page-paragraph">
+        Moving up the hierarchy means the language becomes more complex and therefore requires more memory. These classes form a hierarchy of sets: every regular language is context-free, but not every context-free language is regular, just like every integer is a real number, but not every real number is an integer.
+        <br><br>
+        <img src="../images/Chomsky-hierarchy.png" alt="Chomsky Hierarchy" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+        <br><br>
+        We’ll start at the bottom and work our way up.
+      </p>
+
+      <h1 class="section-title">Type 3 - Regular Languages</h1>
+
+      <p class="page-paragraph">
+        A regular language is a set of strings that can be recognized by a machine with a fixed, finite number of states. They’re often described using regular expressions, and can find patterns like “does this contain <span class="keyword">abc</span> somewhere?” or “is there an even number of <span class="keyword">1s</span>?”.
+
+        This makes them powerful, but limited. For example, they cannot check whether parentheses are balanced, since that would require remembering how many have been opened.
+
+        In short, they can only remember a limited amount of information, no matter how long the input is.
+        <br><br>
+
+        <a href="https://en.wikipedia.org/wiki/Finite-state_machine">
+          <img src="../images/Turnstile_state_machine_colored.png" alt="Finite State Machine" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+        </a>
+        <br><br>
+
+        This is a finite state machine (FSM) for a turnstile, the kind you see in train stations or airports. It has two states (locked and unlocked) and reacts to inputs like <span class="keyword">coin</span> and <span class="keyword">push</span>. It doesn’t remember anything about the past; it only looks at its current state and input to decide what to do next.
+      </p>
+      
+      <h1 class="section-title">Type 2 - Context-Free Languages</h1>
+
+      <p class="page-paragraph">
+        Context-free languages are a step up from regular languages. Instead of having only a fixed, finite amount of memory, they have access to a simple structure called a <span class="keyword">stack</span>. This allows them to keep track of previously seen information, but only in a very structured way.
+
+        Because of this, they can handle patterns that regular languages can't. For example, they can check whether parentheses are balanced by “pushing” each opening parenthesis and “popping” it when a closing one appears.
+
+        However, they are still limited. They cannot compare multiple independent pieces of information at once.
+
+        In short, they can remember as much as they want, but only in a last-in, first-out way.
+      </p>
+	 
+      <div class="code-container">
+        <div class="code-label">C</div>
+        <pre class="codeblock"><code>
+<span class="code-comment">// Check if parentheses are balanced using a stack</span>
+
+<span class="code-keyword">#include</span> &lt;stdio.h&gt;
+
+<span class="code-keyword">int</span> <span class="code-function">isBalanced</span>(<span class="code-keyword">char</span> *str) {
+    <span class="code-keyword">int</span> stack = <span class="code-number">0</span>;
+
+    <span class="code-keyword">for</span> (<span class="code-keyword">int</span> i = <span class="code-number">0</span>; str[i] != '\0'; i++) {
+        <span class="code-keyword">if</span> (str[i] == '(') {
+            stack++;
+        } <span class="code-keyword">else if</span> (str[i] == ')') {
+            stack--;
+
+            <span class="code-keyword">if</span> (stack &lt; <span class="code-number">0</span>) {
+                <span class="code-keyword">return</span> <span class="code-number">0</span>;
+            }
+        }
+    }
+
+    <span class="code-keyword">return</span> stack == <span class="code-number">0</span>;
+}
+        </code></pre>
+      </div>
+
+      <p class="page-paragraph">
+        Unlike a finite state machine, this program uses a variable that can grow as needed. Each opening parenthesis is “pushed”, and each closing one “pops” it off.
+
+        This ability to track an unbounded amount of information in a structured way is exactly what makes context-free languages more powerful than regular languages.
+      </p>		
+	
+      <div class="note-container">
+        <div class="note-label">NOTE</div>
+        <p class="note-content">
+          This isn’t a true stack, it’s just a counter. Real context-free machines (pushdown automata) use a proper stack that can store symbols, not just a number.
+        </p>
+      </div>
+	
+      <h1 class="section-title">Type 1 - Context-Sensitive Languages</h1>
+
+      <p class="page-paragraph">
+        Context-sensitive languages are a step up from context-free languages. Instead of being limited to a stack, they can use memory in a much more flexible way, allowing them to keep track of multiple relationships at once.
+
+        Because of this, they can handle patterns that context-free languages cannot. For example, they can recognize strings like <span class="keyword">aⁿbⁿcⁿ</span>, where the number of each symbol must match. This requires comparing multiple counts at once, which a single stack cannot do.
+
+        This is similar to cross-serial dependencies in natural language, where elements earlier in a sentence correspond to multiple elements later on.
+
+        In short, they can remember and compare multiple pieces of information at once.
+      </p>
+
+      <h1 class="section-title">Type 0 - Recursively Enumerable Languages</h1>
+
+      <p class="page-paragraph">
+        Recursively enumerable languages are the most general class in the hierarchy. They remove almost all restrictions on how memory can be used. These languages can be recognized by a machine with unlimited memory and the ability to perform arbitrary computations. In fact, this class corresponds exactly to what a general-purpose computer can do. Because of this, they can express extremely complex patterns. For example, a machine can simulate another program and try to determine what it will do. However, this is where things become fundamentally different from the previous levels. Unlike simpler machines, these are not guaranteed to halt. For some inputs, they may run forever without producing an answer. This isn’t just a limitation of our tools, it’s a mathematical fact. Alan Turing showed that there is no general method to determine whether an arbitrary program will eventually stop or run forever. This is known as the halting problem and it is its own can of worms but in short, they can compute anything that is computable, but they don’t always know when to stop.
+      </p>
+
+       <h1 class="section-title">What does this mean for human language?</h1>
+	
+       <p class="page-paragraph">
+          At first glance, the Chomsky hierarchy looks like a purely abstract classification. But before us computer nerds invaded it, it was originally motivated by the study of human language. Natural languages like English are often well-modeled by context-free grammars, since they rely heavily on nested structures. However, as we saw earlier, some languages exhibit patterns like cross-serial dependencies, which go beyond what context-free languages can describe. This raises an interesting question: how powerful is human language, really? In practice, human languages seem to sit somewhere between context-free and context-sensitive. They are expressive enough to require more than simple stack-based memory, but still constrained enough to be efficiently processed by the human brain. The Chomsky hierarchy isn't just about machines, well... we're machines too, so I suppose it is, BUT it’s also a way of understanding the limits and structure of human language itself.	
+       </p>
+       
+       <h1 class="section-title">Beyond Structure</h1>
+	
+       <p class="page-paragraph">
+         Here’s something strange: a sentence can be perfectly valid, and still feel completely unreadable. Take this example: <span class="keyword">"before was was was, was was is"</span>. It is grammatically valid under a particular interpretation, but almost impossible to understand at a glance. Or consider a deeply nested sentence: <span class="keyword"> the cat that saw the dog that saw the bird that saw the person that saw the door that saw the spaceship is red </span> This is also valid English. Each clause is nested inside another, just like a context-free structure. But after a few levels, it becomes extremely difficult to follow. What this shows is that human language is not just about what is theoretically possible, it is also constrained by what we can actually process. In theory, context-free grammars allow unlimited nesting. In practice, humans can only handle a small amount before things break down. Our language may be powerful, but our ability to understand it is limited.	
+	<br><br>
+	  That being said, the Chomsky hierarchy tells us how much memory is needed to recognize structure, but human language is about more than structure alone. Meaning, context, and world knowledge all play a role in how we understand sentences. A sentence can be perfectly valid and still be meaningless, or even misleading without the right context. In other words, the hierarchy captures the mechanics of language, but not the full experience of using it. And this is where things get tricky. “Meaning” itself is hard to pin down in a precise, scientific way. We can describe structure formally, but understanding meaning involves interpretation, context, and cognition, things we still don’t fully understand. The human brain is still far better at this than anything we’ve built. It effortlessly handles ambiguity, fills in gaps, and interprets intent. This begins to touch on deeper questions about consciousness and understanding, areas that are still very much open problems. There are parts of language that remain beyond our current ability to fully explain.
+       </p>
+
+       <h1 class="section-title">What does this mean for programming languages?</h1>
+       
+       <p class="page-paragraph">
+	   At the lowest level, most lexers are built using regular languages. Tokenizing input—recognizing identifiers, numbers, keywords, is exactly the kind of pattern matching that finite state machines are good at. Once tokens are produced, parsing takes over. Most programming languages are designed to be context-free, which means they can be parsed using a stack-based approach. This is why tools like recursive descent parsers and LR parsers work so well, they’re built on the same idea as pushdown automata. This isn’t an accident. Languages are deliberately designed this way so they can be parsed efficiently and predictably.
+	   <br><br>
+	   Things get more interesting when we move beyond syntax. Type checking, variable scoping, and name resolution often require more than context-free power. For example, making sure a variable is declared before it is used, or that two identifiers refer to the same entity, involves tracking relationships across different parts of a program. This pushes us into context-sensitive territory. The grammar itself might be context-free, but the meaning of the program is not.
+	   <br><br>
+	   At the highest level, once a program is running, we are effectively in Type 0 territory. A program can simulate any computation, including other programs. And just like recursively enumerable languages, we run into the same fundamental limitation: we cannot, in general, determine whether a program will halt. The entire structure of modern compilers mirrors the Chomsky hierarchy, from regular lexing, to context-free parsing, to context-sensitive analysis, all the way up to full computation. In practice, a programming language is just the Chomsky Hierarchy, layer by layer. 
+	   <br><br>
+	   There’s something beautiful about the fact that something as complex as language can be defined in such a simple hierarchy, don't you think?.
+       </p>
+	   <h1 class="section-title">Context-Sensitive Lexers</h1> 
+				<p class="page-paragraph"> Most lexers are usually regular but there are exceptions. In early Fortran, spaces are completely insignificant outside of string literals. The lexer can't use whitespace to separate tokens, which is what basically every other language relies on. <br><br> This creates a famous ambiguity. Consider: </p> <div class="code-container"> <div class="code-label">Fortran</div> <pre class="codeblock"><span class="code-keyword">DO</span> <span class="code-number">10</span> I = <span class="code-number">1</span>, <span class="code-number">10</span> SUM = SUM + I</pre> </div> <p class="page-paragraph"> Since Fortran ignored all whitespace, the lexer couldn't tokenize <span class="keyword">DO</span> as a keyword until it had scanned far enough ahead to find whether a comma or a period appeared, a classic example of its context-sensitive lexer. Though I couldn't find any confirmation, it's a rumor that a bug like this caused Mariner 1 to veered off course and explode. You're probably wondering why it was made like this. The answer is pretty simple. <span class="keyword">Punch-Cards</span>. Fortran itself is so old that it was designed during that time, and since Punch-Cards were designed around a column layout, just about everything in the language makes sense when you look at it from that perspective. Columns 1-5 on a Fortran Punch-Card were for statement labels(). Column 6 was a <span class="keyword">continuation</span> character. If someone punched a hole there, it meant the current card was a continuation of a previous one. Columns 7-72 was the actual meat, the code. Column 73-80 were ignored completely, they were used for numbering your cards so if you dropped them it would be easier to put them back in order. Although dropping Punch-Cards was always a sign of having a very bad day. Obviously there wasn't a whole lot of space on a card for the code, so designers wanted to pack as much code together in a space as possible, removing whitespace was just the logical answer to that kind of problem. <br><br> That's just one of the interesting features of Fortran, there are plenty more. The Implicit-typing from the first letter of a variable is another interesting one with the famous line. <span class="keyword">GOD IS REAL UNLESS DECLARED INTEGER</span> <br><br> Although if you thought context-sensitive lexers are a thing of the past and relegated to nothing more than campfire horror stories, think again. This kind of lexing pops up all over modern languages. With Pythons indentation being the ultimate modern example. The meaning of a line of Python code changes depending on what's above it. If you're at 4 lines of indentation you're in a block, if you're at 0 you're not. <br><br> </p>
+	
+       <div class="divider"></div>
+
+<h1 class="section-title">Related Articles</h1>
+
+<p class="page-paragraph">
+  <a href="../articles.html" class="article-hyperlink">
+    Browse more articles →
+  </a>
+</p>
+
+    </main>
+  </div>
+</body>
+</html>
