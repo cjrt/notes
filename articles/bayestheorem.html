@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bayes' Theorem</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@400;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="top">
+        <a href="../home.html">
+          <img src="../images/avatar.jpg" alt="me" class="avatar">
+        </a>
+      </div>
+      <div class="bottom">
+        <h1 class="page-title">cjt</h1>
+        <p class="page-paragraph">
+          I'm Carl. I write about Mathematics, Computer Science and other things I find interesting.
+        </p>
+        <div class="divider"></div>
+        <nav>
+          <a href="../index.html">Home</a>
+          <a href="../articles.html">Articles</a>
+          <a href="../resources.html">Resources</a>
+          <a href="https://github.com/cjrt">Github</a>
+          <a href="../about.html">About</a>
+        </nav>
+      </div>
+    </aside>
+ 
+    <main class="content">
+      <h1 class="page-title">The Intuition Behind Bayes' Theorem</h1>
+ 
+      <div class="divider"></div>
+ 
+      <h2 class="section-title">What is Bayes' Theorem?</h2>
+ 
+      <p class="page-paragraph">
+        Bayes' Theorem is one of the most important ideas in probability theory, discovered by <a href="https://en.wikipedia.org/wiki/Thomas_Bayes">Thomas Bayes</a> in the 18th century. It gives us a principled way to update our beliefs when we receive new evidence — and it shows up everywhere: medical diagnosis, spam filters, machine learning, scientific inference, and even everyday reasoning under uncertainty.
+      </p>
+ 
+      <p class="page-paragraph">
+        Imagine a medical test. If a patient tests positive, what is the probability that they actually have the disease? Intuitively, we might think a positive result means a high probability, but that's not always true. Bayes' Theorem allows us to calculate this properly by combining prior knowledge with new evidence.
+        <br><br>
+        Everything about this theorem makes sense when you derive it yourself. It's very simple to derive and you only have to do it once — similar to deriving the basic formula of a derivative. You do it once and it sticks with you forever.
+      </p>
+ 
+      <p class="page-paragraph">
+        At its core, the theorem helps us answer:
+        <br><br>
+        <span class="keyword">What is the probability of A given that B has occurred?</span>
+      </p>
+ 
+      <h2 class="section-title">A Visual Intuition</h2>
+ 
+      <figure>
+        <img src="../images/probabilitybox.png" alt="Probability diagram showing regions A and B" style="max-width: 100%; object-fit: contain;">
+        <figcaption class="page-paragraph">
+          2×2 grid splitting the sample space into A / not A and B / not B.
+        </figcaption>
+      </figure>
+ 
+      <p class="page-paragraph">
+        The diagram above divides the entire sample space into four cells using two binary splits: whether event <span class="keyword">A</span> occurs (left column) or doesn't (right column), and whether event <span class="keyword">B</span> occurs (top row) or doesn't (bottom row). Each cell represents a distinct combination of outcomes — for example, the top-left cell is where both <span class="keyword">A</span> and <span class="keyword">B</span> happen, and the bottom-right is where neither does.
+      </p>
+ 
+      <p class="page-paragraph">
+        All probabilities can be thought of as <b>part over whole</b>. This idea is the foundation of everything that follows.
+      </p>
+ 
+      <h2 class="section-title">Deriving Bayes' Theorem</h2>
+ 
+      <p class="page-paragraph">
+        Label the four cells of the grid <span class="keyword">s</span>, <span class="keyword">t</span>, <span class="keyword">u</span>, and <span class="keyword">v</span>, where each letter represents the probability mass in that cell:
+      </p>
+ 
+      <div class="note-container">
+        <div class="note-label">LABELLING THE GRID</div>
+        <p class="note-content">
+          s = P(A and B) — top-left: both A and B occur<br>
+          t = P(A and ¬B) — bottom-left: A occurs, B does not<br>
+          u = P(¬A and B) — top-right: B occurs, A does not<br>
+          v = P(¬A and ¬B) — bottom-right: neither occurs<br><br>
+          s + t + u + v = 1 (the whole sample space)
+        </p>
+      </div>
+ 
+      <p class="page-paragraph">
+        Now we can express every probability we need purely in terms of these four values. P(A) is the entire left column; P(B) is the entire top row; and the conditionals zoom in on a single row or column and ask what fraction of it is the top-left cell <span class="keyword">s</span>.
+      </p>
+ 
+      <div class="note-container">
+        <div class="note-label">DERIVATION</div>
+        <p class="note-content">
+          P(A) = (s + t) / (s + t + u + v)<br><br>
+ 
+          P(B | A) = s / (s + t)&nbsp;&nbsp;&nbsp;&nbsp;<em>— of the left column, what fraction is s?</em><br><br>
+ 
+          P(A) · P(B | A) = s / (s + t + u + v)<br><br>
+ 
+          P(B) = (s + u) / (s + t + u + v)<br><br>
+ 
+          P(A | B) = s / (s + u)&nbsp;&nbsp;&nbsp;&nbsp;<em>— of the top row, what fraction is s?</em><br><br>
+ 
+          P(B) · P(A | B) = s / (s + t + u + v)
+        </p>
+      </div>
+ 
+      <p class="page-paragraph">
+        Notice something interesting: both expressions give the same result.
+      </p>
+ 
+      <p class="page-paragraph">
+        This means:
+        <br><br>
+        <span class="keyword">P(A) · P(B | A) = P(B) · P(A | B)</span>
+      </p>
+ 
+      <p class="page-paragraph">
+        Mathematics always gives us a pat on the head any time we find a symmetry. This one makes geometric sense too: swapping rows and columns in the grid doesn't change which cell is in the top-left corner — it's always <span class="keyword">s</span>.
+      </p>
+ 
+      <p class="page-paragraph">
+        Finally, divide both sides by <span class="keyword">P(B)</span>:
+      </p>
+ 
+      <div class="note-container">
+        <div class="note-label">RESULT</div>
+        <p class="note-content">
+          <strong>P(A | B) = (P(A) · P(B | A)) / P(B)</strong>
+        </p>
+      </div>
+ 
+      <h2 class="section-title">A Surprising Consequence</h2>
+ 
+      <p class="page-paragraph">
+        Bayes' Theorem becomes really interesting when it contradicts our intuition. Suppose a disease affects only <span class="keyword">1%</span> of the population, so <span class="keyword">P(D) = 0.01</span>. A test for it is <span class="keyword">99%</span> accurate: <span class="keyword">P(Pos | D) = 0.99</span> and <span class="keyword">P(Pos | ¬D) = 0.01</span>.
+      </p>
+ 
+      <div class="note-container">
+        <div class="note-label">SETUP</div>
+        <p class="note-content">
+          P(D) = 0.01<br>
+          P(Pos | D) = 0.99<br>
+          P(Pos | ¬D) = 0.01
+        </p>
+      </div>
+ 
+      <p class="page-paragraph">
+        Now suppose you test positive. What is <span class="keyword">P(D | Pos)</span>? Using Bayes' Theorem:
+      </p>
+ 
+      <div class="note-container">
+        <div class="note-label">FORMULA</div>
+        <p class="note-content">
+          P(D | Pos) = (P(D) · P(Pos | D)) / P(Pos)
+        </p>
+      </div>
+ 
+      <p class="page-paragraph">
+        First compute <span class="keyword">P(Pos)</span>:
+      </p>
+ 
+      <div class="note-container">
+        <div class="note-label">CALCULATION</div>
+        <p class="note-content">
+          P(Pos) = P(D)P(Pos | D) + P(¬D)P(Pos | ¬D)<br><br>
+          = (0.01)(0.99) + (0.99)(0.01)<br>
+          = 0.0099 + 0.0099 = 0.0198
+        </p>
+      </div>
+ 
+      <p class="page-paragraph">
+        Now plug everything in:
+      </p>
+ 
+      <div class="note-container">
+        <div class="note-label">RESULT</div>
+        <p class="note-content">
+          P(D | Pos) = 0.0099 / 0.0198 = <strong>0.5</strong>
+        </p>
+      </div>
+ 
+      <figure>
+        <img src="../images/probabilitybox2.png" alt="Probability diagram showing regions A and B" style="max-width: 100%; object-fit: contain;">
+        <figcaption class="page-paragraph">
+          The general grid, now filled with actual probabilities from this example.
+        </figcaption>
+      </figure>
+ 
+      <p class="page-paragraph">
+        So even after testing positive, there is only a <span class="keyword">50%</span> chance you actually have the disease.
+      </p>
+ 
+      <div class="note-container">
+        <div class="note-label">INTUITION</div>
+        <p class="note-content">
+          Out of 10,000 people:<br>
+          • 100 have the disease → 99 test positive<br>
+          • 9,900 do not → 99 still test positive<br><br>
+          Total positives = 198, real cases = 99 → about 50%
+        </p>
+      </div>
+ 
+      <p class="page-paragraph">
+        This is the key insight: <b>evidence alone is not enough, the base rate matters just as much</b>. A highly accurate test applied to a rare condition will still produce a flood of false positives, simply because there are so many more healthy people to test. Bayes' Theorem is the tool that keeps that honest.
+      </p>
+ 
+      <h2 class="section-title">Related Articles</h2>
+ 
+      <p class="page-paragraph">
+        <a href="../articles.html" class="article-hyperlink">
+          Browse more articles →
+        </a>
+      </p>
+    </main>
+  </div>
+</body>
+</html>
