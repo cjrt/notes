@@ -77,7 +77,9 @@
       </p>
  
       <div class="note-container">
-        <div class="note-label">LABELLING THE GRID</div>
+	<div class="note-header">
+	  <img src="../images/lightbulb.png" alt="Lightbulb" class="note-icon">
+	</div>
         <p class="note-content">
           s = P(A and B) — top-left: both A and B occur<br>
           t = P(A and ¬B) — bottom-left: A occurs, B does not<br>
@@ -88,21 +90,23 @@
       </div>
  
       <p class="page-paragraph">
-        Now we can express every probability we need purely in terms of these four values. P(A) is the entire left column; P(B) is the entire top row; and the conditionals zoom in on a single row or column and ask what fraction of it is the top-left cell <span class="keyword">s</span>.
+        Now we can express every probability we need purely in terms of these four values. <span class="keyword">P(A)</span> is the entire left column; <span class="keyword">P(B)</span>  is the entire top row; and the conditionals zoom in on a single row or column and ask what fraction of it is the top-left cell <span class="keyword">s</span>.
       </p>
  
       <div class="note-container">
-        <div class="note-label">DERIVATION</div>
+        <div class="note-header">
+	  <img src="../images/sigma.png" alt="Lightbulb" class="note-icon">
+	</div>
         <p class="note-content">
           P(A) = (s + t) / (s + t + u + v)<br><br>
  
-          P(B | A) = s / (s + t)&nbsp;&nbsp;&nbsp;&nbsp;<em>— of the left column, what fraction is s?</em><br><br>
+	  P(B | A) = s / (s + t)<br><br>
  
           P(A) · P(B | A) = s / (s + t + u + v)<br><br>
  
           P(B) = (s + u) / (s + t + u + v)<br><br>
  
-          P(A | B) = s / (s + u)&nbsp;&nbsp;&nbsp;&nbsp;<em>— of the top row, what fraction is s?</em><br><br>
+	  P(A | B) = s / (s + u)<br><br>
  
           P(B) · P(A | B) = s / (s + t + u + v)
         </p>
@@ -127,7 +131,9 @@
       </p>
  
       <div class="note-container">
-        <div class="note-label">RESULT</div>
+	<div class="note-header">
+	  <img src="../images/sigma.png" alt="Lightbulb" class="note-icon">
+	</div>
         <p class="note-content">
           <strong>P(A | B) = (P(A) · P(B | A)) / P(B)</strong>
         </p>
@@ -140,7 +146,9 @@
       </p>
  
       <div class="note-container">
-        <div class="note-label">SETUP</div>
+	<div class="note-header">
+	  <img src="../images/lightbulb.png" alt="Lightbulb" class="note-icon">
+	</div>
         <p class="note-content">
           P(D) = 0.01<br>
           P(Pos | D) = 0.99<br>
@@ -153,7 +161,9 @@
       </p>
  
       <div class="note-container">
-        <div class="note-label">FORMULA</div>
+        <div class="note-header">
+	  <img src="../images/sigma.png" alt="Lightbulb" class="note-icon">
+	</div>
         <p class="note-content">
           P(D | Pos) = (P(D) · P(Pos | D)) / P(Pos)
         </p>
@@ -164,7 +174,9 @@
       </p>
  
       <div class="note-container">
-        <div class="note-label">CALCULATION</div>
+	<div class="note-header">
+	  <img src="../images/sigma.png" alt="Lightbulb" class="note-icon">
+	</div>
         <p class="note-content">
           P(Pos) = P(D)P(Pos | D) + P(¬D)P(Pos | ¬D)<br><br>
           = (0.01)(0.99) + (0.99)(0.01)<br>
@@ -177,7 +189,9 @@
       </p>
  
       <div class="note-container">
-        <div class="note-label">RESULT</div>
+	<div class="note-header">
+	  <img src="../images/sigma.png" alt="Lightbulb" class="note-icon">
+	</div>
         <p class="note-content">
           P(D | Pos) = 0.0099 / 0.0198 = <strong>0.5</strong>
         </p>
@@ -195,7 +209,9 @@
       </p>
  
       <div class="note-container">
-        <div class="note-label">INTUITION</div>
+	<div class="note-header">
+	  <img src="../images/lightbulb.png" alt="Lightbulb" class="note-icon">
+	</div>
         <p class="note-content">
           Out of 10,000 people:<br>
           • 100 have the disease → 99 test positive<br>

@@ -225,32 +225,39 @@ nav a:hover {
 .codeblock .code-comment { color: #6272a4; font-style: italic; }
 
 .note-container {
-  border: 1px solid #333;
-  border-radius: 8px;
-  background-color: #2a2a2a; 
-  padding: 0.75rem 1rem;
-  margin-bottom: 1.5rem;
-  position: relative;
-  font-family: "Spline Sans Mono", monospace;
-
+  background-color: #2a2a2a;
   border-left: 4px solid #fff; 
+  padding: 12px 16px;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  font-family: "Spline Sans Mono", monospace;
+  display: flex;
+  flex-direction: column;
 }
 
-.note-label {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: #111;
-  color: #fff;
-  font-size: 0.65rem;
-  font-weight: bold;
-  padding: 0.2rem 0.5rem;
-  border-bottom-left-radius: 6px;
+.note-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.note-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+
+.note-title {
+  font-weight: 700;
+  color: #fff; 
+  font-size: 0.95rem;
 }
 
 .note-content {
   margin: 0;
-  padding: 1rem;
-  color: #e0e0e0;
+  padding-left: 40px; 
+  color: #fff;
   line-height: 1.5;
+  box-sizing: border-box;
+  max-width: 450px;
 }
