@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dot Product</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@400;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="top">
+        <a href="../home.html">
+          <img src="../images/avatar.jpg" alt="me" class="avatar">
+        </a>
+      </div>
+      <div class="bottom">
+        <h1 class="page-title">cjt</h1>
+        <p class="page-paragraph">
+          I'm Carl. I write about Mathematics, Computer Science, and other things I find interesting.
+        </p>
+        <div class="divider"></div>
+        <nav>
+          <a href="../index.html">Home</a>
+          <a href="../articles.html">Articles</a>
+          <a href="../resources.html">Resources</a>
+          <a href="https://github.com/cjrt">Github</a>
+          <a href="../about.html">About</a>
+        </nav>
+      </div>
+    </aside>
+ 
+    <main class="content">
+      <h1 class="page-title">The Dot Product</h1>
+ 
+      <div class="divider"></div>
+
+      <h2 class="section-title">Prelude</h2>
+      <p class="page-paragraph">
+        Complex numbers have been studied since the 16th century, and later formalised in a geometric way that allows them to represent points in the plane. This naturally raises a broader question: How do we describe direction and alignment in higher dimensions? 
+	<br><br>
+	By the time Hamilton was working in the 19th century, it was clear that extending complex numbers directly to three dimensions was not straightforward. While his work led to quaternions in four dimensions, a different idea emerged for ordinary space: Instead of extending numbers, we study <b>vectors</b>, and define ways to measure how they relate to each other.
+	<br><br>
+	The most important of these is the <b>dot product</b>.
+      </p>
+ 
+      <h2 class="section-title">What's the Dot Product?</h2>
+      <p class="page-paragraph">
+        The dot product answers a simple question: how much of one vector lies in the direction of another? 
+        This number tells you whether vectors point in roughly the same direction (positive), are perpendicular (zero), 
+        or point in opposite directions (negative).
+        <br><br>
+        The dot product is not a construction unique to linear algebra, it emerges naturally from any mathematical framework that describes space. Complex numbers, which predate the modern vector formalism by centuries, already exhibit the same behaviour:      
+	</p>
+
+      <div class="math-note">
+        <div class="note-header">
+          <img src="../images/sigma.png" alt="Lightbulb" class="note-icon">
+        </div>
+        <p class="math-content">
+          \( z_{1} = x_{1} + i y_{1} \)<br>
+          \( z_{2} = x_{2} + i y_{2} \)<br>
+          \[ \operatorname{Re}(\overline{z_1} z_2) = x_1 x_2 + y_1 y_2 = |z_1||z_2|\cos(\alpha) \]
+        </p>
+      </div>
+
+      <div class="note-container">
+        <div class="note-header">
+          <img src="../images/lightbulb.png" alt="Lightbulb" class="note-icon">
+        </div>
+        <p class="note-content">
+          Here, \( \alpha \) is the angle between \( z_1 \) and \( z_2 \), lying between 0 and \( \pi \).
+        </p>
+      </div>
+
+      <p class="page-paragraph">
+        Complex numbers are powerful, but the <b>real</b> origin of the dot product lies in the law of cosines. 
+        This geometric identity turns out to contain the dot product hidden within it.
+      </p>
+
+      <div class="math-note">
+        <div class="note-header">
+          <img src="../images/sigma.png" alt="Lightbulb" class="note-icon">
+        </div>
+        <p class="math-content">
+          \[ c^2 = a^2 + b^2 - 2ab\cos(\theta) \]
+        </p>
+      </div>
+
+      <p class="page-paragraph">
+        Now let us make this precise. Let two sides of a triangle be vectors 
+        \( \mathbf{v} \) and \( \mathbf{w} \), with angle \( \theta \) between them. 
+        Then the third side is \( \mathbf{v} - \mathbf{w} \), so:
+        \[
+        a = |\mathbf{v}|,\quad b = |\mathbf{w}|,\quad c = |\mathbf{v} - \mathbf{w}|.
+        \]
+        Substituting into the law of cosines gives:
+      </p>
+
+      <div class="math-note">
+        <div class="note-header">
+          <img src="../images/sigma.png" alt="Lightbulb" class="note-icon">
+        </div>
+        <p class="math-content">
+          \[ |\mathbf{v} - \mathbf{w}|^2 = |\mathbf{v}|^2 + |\mathbf{w}|^2 - 2|\mathbf{v}||\mathbf{w}|\cos(\theta) \]
+        </p>
+      </div>
+
+      <p class="page-paragraph">
+        Now compute the left-hand side using coordinates. Let 
+        \( \mathbf{v} = (x_1, y_1) \) and \( \mathbf{w} = (x_2, y_2) \). Then:
+      </p>
+
+      <div class="math-note">
+        <div class="note-header">
+          <img src="../images/sigma.png" alt="Lightbulb" class="note-icon">
+        </div>
+        <p class="math-content">
+          \[ |\mathbf{v} - \mathbf{w}|^2 = (x_1 - x_2)^2 + (y_1 - y_2)^2 \]
+          \[ = (x_1^2 + y_1^2) + (x_2^2 + y_2^2) - 2(x_1x_2 + y_1y_2) \]
+        </p>
+      </div>
+
+      <p class="page-paragraph">
+        But we also know that:
+        \[
+        |\mathbf{v}|^2 = x_1^2 + y_1^2,\quad |\mathbf{w}|^2 = x_2^2 + y_2^2.
+        \]
+        These terms appear on both sides and cancel, leaving:
+      </p>
+
+      <div class="math-note">
+        <div class="note-header">
+          <img src="../images/sigma.png" alt="Lightbulb" class="note-icon">
+        </div>
+        <p class="math-content">
+          \[ -2(x_1x_2 + y_1y_2) = -2|\mathbf{v}||\mathbf{w}|\cos(\theta) \]
+        </p>
+      </div>
+
+      <p class="page-paragraph">
+        Cancelling the factor of \( -2 \), we obtain:
+      </p>
+
+      <div class="math-note">
+        <div class="note-header">
+          <img src="../images/sigma.png" alt="Lightbulb" class="note-icon">
+        </div>
+        <p class="math-content">
+          \[ \mathbf{v} \cdot \mathbf{w} = x_1x_2 + y_1y_2 = |\mathbf{v}||\mathbf{w}|\cos(\theta) \]
+        </p>
+      </div>
+
+      <h2 class="section-title">All Roads Lead To...</h2>
+
+      <p class="page-paragraph">
+        Recall the complex number formula from the start:
+      </p>
+
+      <div class="math-note">
+        <div class="note-header">
+          <img src="../images/sigma.png" alt="Lightbulb" class="note-icon">
+        </div>
+        <p class="math-content">
+          \[ \operatorname{Re}(\overline{z_1} z_2) = x_1 x_2 + y_1 y_2 = |z_1||z_2|\cos(\alpha) \]
+        </p>
+      </div>
+	<p class="page-paragraph">
+  	Expand \( \overline{z_1} z_2 = (x_1 - iy_1)(x_2 + iy_2) \) and take the real part, you get \( x_1 x_2 + y_1 y_2 \) exactly. The same expression we derived from the law of cosines.
+	</p>
+	<p class="page-paragraph">
+  	Both approaches are describing the same geometric quantity, how much two directions align, just from different starting points. 
+  	Complex multiplication encodes rotation and scaling in the plane, and the real part 
+  	extracts the component that survives when you project one vector onto another. 
+  	The law of cosines gets there through triangle geometry. The algebra is different; 
+  	the object is the same.
+	</p>
+
+       <h2 class="section-title">Note: Higher Dimensions</h2>
+
+      <p class="page-paragraph">
+        Nothing in the derivation depends on being in 2D.
+      </p>
+
+      <p class="page-paragraph">
+  	In \( \mathbb{R}^n \), vectors take the form
+  	\( \mathbf{v} = (v_1, v_2, \dots, v_n) \) and 
+  	\( \mathbf{w} = (w_1, w_2, \dots, w_n) \). 
+  	The dot product generalises naturally as:
+      </p>
+
+      <div class="math-note">
+	<div class="note-header">
+	  <img src="../images/sigma.png" alt="Lightbulb" class="note-icon">
+	</div>
+	<p class="math-content">
+	  \[ \mathbf{v} \cdot \mathbf{w} = \sum_{i=1}^{n} v_i w_i \]
+	</p>
+      </div>
+
+      <p class="page-paragraph">
+         Although the coordinate formula changes, the geometric meaning remains exactly the same:
+      </p>
+
+      <div class="math-note">
+	<div class="note-header">
+	  <img src="../images/sigma.png" alt="Lightbulb" class="note-icon">
+	</div>
+	<p class="math-content">
+	  \[ \mathbf{v} \cdot \mathbf{w} = |\mathbf{v}||\mathbf{w}|\cos(\theta) \]
+	</p>
+      </div>
+
+      <p class="page-paragraph">
+        Even in higher dimensions, the dot product still measures how much two vectors point in the same direction. 
+  	The only difference is that we can no longer visualise the angle directly, but the algebra continues to behave 
+  	in exactly the same way.
+      </p>
+ 
+      <h2 class="section-title">Related Articles</h2>
+      <p class="page-paragraph">
+        <a href="../articles.html" class="article-hyperlink">
+          Browse more articles →
+        </a>
+      </p>
+    </main>
+  </div>
+</body>
+</html>
