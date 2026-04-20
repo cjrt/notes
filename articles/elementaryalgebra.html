@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Elementary Algebra</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@400;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="top">
+        <a href="../home.html">
+          <img src="../images/avatar.jpg" alt="me" class="avatar">
+        </a>
+      </div>
+      <div class="bottom">
+        <h1 class="page-title">cjt</h1>
+        <p class="page-paragraph">
+          I'm Carl. I write about Mathematics, Computer Science, and other things I find interesting.
+        </p>
+        <div class="divider"></div>
+        <nav>
+          <a href="../index.html">Home</a>
+          <a href="../articles.html">Articles</a>
+          <a href="../resources.html">Resources</a>
+          <a href="https://github.com/cjrt">Github</a>
+          <a href="../about.html">About</a>
+        </nav>
+      </div>
+    </aside>
+ 
+    <main class="content">
+      <h1 class="page-title">Elementary Algebra</h1>
+      <div class="divider"></div>
+      <p class="page-paragraph">
+        A firm understanding of the elementary rules that govern arithmetic will serve you well. Each rule stacks on top of others, it's better to see what's happening rather than memorizing. 
+      </p>
+ 
+      <h2 class="section-title">Fractions &amp; Rational Arithmetic</h2>
+      <p class="page-paragraph">
+        A fraction \(\tfrac{a}{b}\) (with \(b \neq 0\)) is simply \(a\) multiplied by the multiplicative inverse of \(b\), written \(b^{-1}\). Every rule for fractions follows from this definition together with the standard field axioms.
+      </p>
+ 
+      <p class="page-paragraph"><b>Equivalent Fractions</b></p>
+      <p class="page-paragraph">
+        Multiplying numerator and denominator by the same nonzero value \(c\) does not change the fraction.
+      </p>
+      <div class="math-note">
+        <p class="math-content">
+          \[\frac{a}{b} = \frac{ac}{bc}, \quad c \neq 0\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+	<b>Why?</b><br><br> \(\dfrac{ac}{bc} = ac \cdot (bc)^{-1} = ac \cdot c^{-1} \cdot b^{-1} = a \cdot (cc^{-1}) \cdot b^{-1} = a \cdot 1 \cdot b^{-1} = \dfrac{a}{b}\) 
+      </p>
+ 
+      <p class="page-paragraph"><b>Multiplication of Fractions</b></p>
+      <div class="math-note">
+        <p class="math-content">
+          \[\frac{a}{b} \cdot \frac{c}{d} = \frac{ac}{bd}\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+        <b>Why?</b><br><br> \(\dfrac{a}{b} \cdot \dfrac{c}{d} = (a \cdot b^{-1})(c \cdot d^{-1}) = (ac)(b^{-1}d^{-1}) = (ac)(bd)^{-1} = \dfrac{ac}{bd}\) 
+      </p>
+ 
+      <p class="page-paragraph"><b>Addition of Fractions</b></p>
+      <div class="math-note">
+        <p class="math-content">
+          \[\frac{a}{b} + \frac{c}{d} = \frac{ad + bc}{bd}\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+        <b>Why?</b><br><br>  We need a common denominator to combine the terms. Using the equivalent fractions rule, rewrite both fractions with denominator \(bd\):
+        \[\frac{a}{b} = \frac{ad}{bd}, \qquad \frac{c}{d} = \frac{bc}{bd}\]
+        Now the denominators match and we can add numerators:
+        \[\frac{ad}{bd} + \frac{bc}{bd} = \frac{ad + bc}{bd}\]
+      </p>
+ 
+      <p class="page-paragraph"><b>Division of Fractions</b></p>
+      <div class="math-note">
+        <p class="math-content">
+          \[\frac{a}{b} \div \frac{c}{d} = \frac{a}{b} \cdot \frac{d}{c} = \frac{ad}{bc}\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+  	<b>Why? </b><br><br>
+  	  Dividing by a number is identical to multiplying by its reciprocal. So \(\frac{c}{d}\) 
+  	  becomes \(\frac{d}{c}\), and we get:
+  	  \[\frac{a}{b} \div \frac{c}{d} = \frac{a}{b} \cdot \frac{d}{c} = \frac{ad}{bc}\]
+      </p>
+ 
+      <p class="page-paragraph"><b>Complex Fractions</b></p>
+      <p class="page-paragraph">
+        A fraction whose numerator or denominator is itself a fraction. The strategy is to multiply through by the LCD of all inner fractions.
+      </p>
+      <div class="math-note">
+        <p class="math-content">
+          \[\dfrac{\,\dfrac{a}{b}\,}{\dfrac{c}{d}} = \frac{a}{b} \cdot \frac{d}{c} = \frac{ad}{bc}\]
+        </p>
+      </div>
+ 
+      <h2 class="section-title">Exponent Rules</h2>
+      <p class="page-paragraph">
+        The exponent \(a^n\) is defined for positive integer \(n\) as repeated multiplication:
+        \[a^n = \underbrace{a \cdot a \cdot a \cdots a}_{n \text{ times}}\]
+        Every exponent rule below is a direct consequence of counting factors.
+      </p>
+ 
+      <p class="page-paragraph"><b>Product Rule</b></p>
+      <div class="math-note">
+        <p class="math-content">
+          \[a^m \cdot a^n = a^{m+n}\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+        <b>Why?</b><br><br> \(a^m \cdot a^n\) is \(m\) copies of \(a\) multiplied by \(n\) copies of \(a\), giving \(m + n\) copies total:
+        \[a^m \cdot a^n = \underbrace{a \cdots a}_{m} \cdot \underbrace{a \cdots a}_{n} = \underbrace{a \cdots a}_{m+n} = a^{m+n} \quad \]
+      </p>
+ 
+      <p class="page-paragraph"><b>Quotient Rule</b></p>
+      <div class="math-note">
+        <p class="math-content">
+          \[\frac{a^m}{a^n} = a^{m-n}, \quad a \neq 0\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+        <b>Why?</b><br><br> Expanding and cancelling \(n\) common factors of \(a\):
+        \[\frac{a^m}{a^n} = \frac{\overbrace{a \cdots a}^{m}}{\underbrace{a \cdots a}_{n}} = \underbrace{a \cdots a}_{m-n} = a^{m-n} \quad \]
+      </p>
+ 
+      <p class="page-paragraph"><b>Power Rule</b></p>
+      <div class="math-note">
+        <p class="math-content">
+          \[(a^m)^n = a^{mn}\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+        <b>Why?</b><br><br>  \((a^m)^n\) is \(n\) copies of \(a^m\) multiplied together. By the product rule applied repeatedly:
+        \[(a^m)^n = \underbrace{a^m \cdot a^m \cdots a^m}_{n} = a^{m+m+\cdots+m} = a^{mn} \quad \]
+      </p>
+ 
+      <p class="page-paragraph"><b>Zero Exponent</b></p>
+      <div class="math-note">
+        <p class="math-content">
+          \[a^0 = 1, \quad a \neq 0\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+        <b>Why?</b><br><br>  Apply the quotient rule with \(m = n\):
+        \[\frac{a^n}{a^n} = a^{n-n} = a^0\]
+        But any nonzero quantity divided by itself equals \(1\), so \(a^0 = 1\).<br>
+      </p>
+ 
+      <p class="page-paragraph"><b>Negative Exponent</b></p>
+      <div class="math-note">
+        <p class="math-content">
+          \[a^{-n} = \frac{1}{a^n}, \quad a \neq 0\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+        <b>Why?</b><br><br>  From the product rule, \(a^n \cdot a^{-n} = a^{n + (-n)} = a^0 = 1\). So \(a^{-n}\) is by definition the multiplicative inverse of \(a^n\), which is \(\dfrac{1}{a^n}\).<br>
+      </p>
+ 
+      <p class="page-paragraph"><b>Fractional Exponent</b></p>
+      <div class="math-note">
+        <p class="math-content">
+          \[a^{1/n} = \sqrt[n]{a}\]
+          \[a^{m/n} = \sqrt[n]{a^m} = \left(\sqrt[n]{a}\right)^m\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+        <b>Why?</b><br><br> We need \(a^{1/n}\) to be consistent with the power rule. If we raise it to the power \(n\):
+        \[\left(a^{1/n}\right)^n = a^{(1/n) \cdot n} = a^1 = a\]
+	So \(a^{1/n}\) is a number whose \(n\)-th power is \(a\) which is exactly the definition of the \(n\)-th root \(\sqrt[n]{a}\).<br><br>
+        For \(a^{m/n}\), apply the product of exponents: \(a^{m/n} = (a^{1/n})^m = (\sqrt[n]{a})^m\).<br>
+      </p>
+ 
+      <p class="page-paragraph"><b>Power of a Product and Quotient</b></p>
+      <div class="math-note">
+        <p class="math-content">
+          \[(ab)^n = a^n b^n\]
+          \[\left(\frac{a}{b}\right)^n = \frac{a^n}{b^n}\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+        <b>Why?</b><br><br> Expanding \((ab)^n\) as repeated multiplication and regrouping:
+        \[(ab)^n = \underbrace{(ab)(ab)\cdots(ab)}_{n} = \underbrace{a \cdots a}_{n}\cdot\underbrace{b \cdots b}_{n} = a^n b^n \quad \]
+      </p>
+ 
+      <h2 class="section-title">Radical Rules</h2>
+      <p class="page-paragraph">
+        Radicals are fractional exponents in disguise: \(\sqrt[n]{a} = a^{1/n}\). Every radical rule is therefore a restatement of an exponent rule. This section states them explicitly in radical notation, since that form is common in practice. Cross-referencing with the exponent rules shows exactly why each holds.
+      </p>
+ 
+      <p class="page-paragraph"><b>Product Rule for Radicals</b></p>
+      <div class="math-note">
+        <p class="math-content">
+          \[\sqrt[n]{ab} = \sqrt[n]{a} \cdot \sqrt[n]{b}, \quad a, b \geq 0\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+        <b>Why?</b><br><br>  Rewrite using fractional exponents and apply the power-of-a-product rule:
+        \[\sqrt[n]{ab} = (ab)^{1/n} = a^{1/n} b^{1/n} = \sqrt[n]{a}\cdot\sqrt[n]{b} \quad \]
+      </p>
+ 
+      <p class="page-paragraph"><b>Quotient Rule for Radicals</b></p>
+      <div class="math-note">
+        <p class="math-content">
+          \[\sqrt[n]{\frac{a}{b}} = \frac{\sqrt[n]{a}}{\sqrt[n]{b}}, \quad a \geq 0,\ b > 0\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+        <b>Why?</b><br><br>  \(\sqrt[n]{\dfrac{a}{b}} = \left(\dfrac{a}{b}\right)^{1/n} = \dfrac{a^{1/n}}{b^{1/n}} = \dfrac{\sqrt[n]{a}}{\sqrt[n]{b}}\))<br>
+      </p>
+ 
+      <p class="page-paragraph"><b>Raising a Radical to a Power</b></p>
+      <div class="math-note">
+        <p class="math-content">
+          \[\left(\sqrt[n]{a}\right)^m = \sqrt[n]{a^m} = a^{m/n}\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+        <b>Why?</b><br><br>  \(\left(\sqrt[n]{a}\right)^m = \left(a^{1/n}\right)^m = a^{m/n} = (a^m)^{1/n} = \sqrt[n]{a^m}\))<br>
+      </p>
+ 
+      <p class="page-paragraph"><b>Rationalising the Denominator</b></p>
+      <p class="page-paragraph">
+        A denominator containing a radical is considered unsimplified. We eliminate it by multiplying numerator and denominator by a suitable expression (using the equivalent fractions rule, so the value is unchanged).
+      </p>
+      <div class="math-note">
+        <p class="math-content">
+          \[\frac{a}{\sqrt{b}} = \frac{a}{\sqrt{b}} \cdot \frac{\sqrt{b}}{\sqrt{b}} = \frac{a\sqrt{b}}{b}\]
+        </p>
+      </div>
+ 
+      <h2 class="section-title">Logarithm Rules</h2>
+      <p class="page-paragraph">
+        The logarithm is the third face of the same relationship that gives us exponents and radicals:
+      </p>
+      <div class="math-note">
+        <p class="math-content">
+          \[a^b = c \iff \log_a c = b \iff a = c^{1/b}\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+        In words: \(\log_a c\) asks "to what power must we raise \(a\) to get \(c\)?" Every logarithm rule is a restatement of an exponent rule through this definition. The base \(a\) must satisfy \(a &gt; 0\) and \(a \neq 1\).
+      </p>
+ 
+      <p class="page-paragraph"><b>Product Rule</b></p>
+      <div class="math-note">
+        <p class="math-content">
+          \[\log_a(xy) = \log_a x + \log_a y\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+        <b>Why?</b><br><br>  Let \(p = \log_a x\) and \(q = \log_a y\), so \(x = a^p\) and \(y = a^q\). Then:
+        \[xy = a^p \cdot a^q = a^{p+q}\]
+        Taking \(\log_a\) of both sides: \(\log_a(xy) = p + q = \log_a x + \log_a y\)<br>
+      </p>
+ 
+      <p class="page-paragraph"><b>Quotient Rule</b></p>
+      <div class="math-note">
+        <p class="math-content">
+          \[\log_a\!\left(\frac{x}{y}\right) = \log_a x - \log_a y\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+        <b>Why?</b><br><br>  With \(x = a^p\) and \(y = a^q\) as before:
+        \[\frac{x}{y} = \frac{a^p}{a^q} = a^{p-q}\]
+        So \(\log_a\!\left(\dfrac{x}{y}\right) = p - q = \log_a x - \log_a y\)<br>
+      </p>
+ 
+      <p class="page-paragraph"><b>Power Rule</b></p>
+      <div class="math-note">
+        <p class="math-content">
+          \[\log_a(x^n) = n\log_a x\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+        <b>Why?</b><br><br>  Let \(p = \log_a x\), so \(x = a^p\). Then:
+        \[x^n = (a^p)^n = a^{pn}\]
+        So \(\log_a(x^n) = pn = n \log_a x\)<br>
+      </p>
+ 
+      <p class="page-paragraph"><b>Special Values</b></p>
+      <div class="math-note">
+        <p class="math-content">
+          \[\log_a 1 = 0\]
+          \[\log_a a = 1\]
+          \[a^{\log_a x} = x\]
+          \[\log_a(a^n) = n\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+        <b>Why?</b><br><br>  All follow directly from the definition. \(a^0 = 1 \implies \log_a 1 = 0\). \(a^1 = a \implies \log_a a = 1\). The last two express that \(\log_a\) and the exponential base \(a\) are inverse functions.<br>
+      </p>
+ 
+      <p class="page-paragraph"><b>Change of Base Formula</b></p>
+      <div class="math-note">
+        <p class="math-content">
+          \[\log_a x = \frac{\log_b x}{\log_b a}\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+        <b>Why?</b><br><br>  Let \(y = \log_a x\), so \(a^y = x\). Take \(\log_b\) of both sides:
+        \[\log_b(a^y) = \log_b x \implies y \log_b a = \log_b x \implies y = \frac{\log_b x}{\log_b a}\]
+	Substituting \(y = \log_a x\) gives the formula<br><br>
+        This is useful because calculators typically only provide \(\log_{10}\) and \(\ln\). For example:
+        \[\log_2 7 = \frac{\ln 7}{\ln 2} \approx \frac{1.9459}{0.6931} \approx 2.807\]
+      </p>
+
+      <h2 class="section-title">Sidenote on Logarithms</h2>
+      <p class="page-paragraph">
+	Before <a href="https://en.wikipedia.org/wiki/John_Napier">John Napier</a> invented logarithms, multiplying large numbers of the kind astronomers and navigators dealt with daily was agonisingly slow and error-prone. Logarithms changed everything. Because log(a×b) = log(a) + log(b), they turned multiplication into addition. You could look up two values in a table, add them, and look the result back up. A calculation that took hours now took minutes. Entire books of log tables were printed and distributed. Ships navigated more accurately. Astronomers mapped the sky faster. It's no exaggeration to say logarithms accelerated the Scientific Revolution all from a single algebraic property.
+	<br><br>
+	I just thought that was cool.
+      </p>
+
+      <h2 class="section-title">Related Articles</h2>
+      <p class="page-paragraph">
+        <a href="../articles.html" class="article-hyperlink">
+          Browse more articles →
+        </a>
+      </p>
+    </main>
+  </div>
+</body>
+</html>

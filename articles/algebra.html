@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Algebra</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Rokkitt:wght@400;600;700&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="top">
+        <a href="../home.html">
+          <img src="../images/avatar.jpg" alt="me" class="avatar">
+        </a>
+      </div>
+      <div class="bottom">
+        <h1 class="page-title">cjt</h1>
+        <p class="page-paragraph">
+          I'm Carl. I write about Mathematics, Computer Science, and other things I find interesting.
+        </p>
+        <div class="divider"></div>
+        <nav>
+          <a href="../index.html">Home</a>
+          <a href="../articles.html">Articles</a>
+          <a href="../resources.html">Resources</a>
+          <a href="https://github.com/cjrt">Github</a>
+          <a href="../about.html">About</a>
+        </nav>
+      </div>
+    </aside>
+ 
+    <main class="content">
+      <h1 class="page-title">Algebra</h1>
+      <div class="divider"></div>
+ 
+      <h2 class="section-title">Modern Algebra</h2>
+      <p class="page-paragraph">
+	In the 9th century, a Persian mathematician named Muhammad ibn Musa al-Khwarizmi wrote a book. Its title, Al-Kitāb al-mukhtaṣar fī ḥisāb <b>al-jabr</b> wal-muqābala - "The Compendious Book on Calculation by Completion and Balancing" gave us the word algebra. His methods were powerful but grounded in the concrete: geometric intuition, worked examples, specific numbers. Mathematics as a craft.
+	<br><br>
+	What we now call Modern Algebra is something different in spirit. It asks not how do we solve this equation, but what kind of thing are we even working with? It is the formal study of algebraic structures, sets equipped with operations and the axioms those operations must obey. Strip away the specifics, keep only the shape of the rules, and suddenly the integers, the symmetries of a crystal, and the rotations of a sphere are revealed as instances of the same underlying idea. 
+	<br><br>
+	That moving from the concrete to the abstract is one of the most powerful things mathematics ever learned to do.
+      </p>
+
+      <h2 class="section-title">Algebraic Structures</h2>
+ 
+      <p class="page-paragraph">
+        An algebraic structure is a set \(S\) together with one or more operations on \(S\), required to satisfy a fixed list of axioms. By varying which axioms we demand, we obtain an entire hierarchy of structures each one a special case of the one below it.
+	<br><br>
+	In essence what we're doing is adding more properties to the set which changes its behavior. 
+      </p>
+
+      <p class="page-paragraph"><b>Magma:</b>
+	The most primitive structure that only obeys the closure property. A set with one binary operation where the only demand is that combining any two elements stays inside the set. No other rules apply.
+      </p>
+      <div class="math-note">
+        <p class="math-content">
+          \[\forall\, a, b \in S \;\Rightarrow\; a \cdot b \in S\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+        Subtraction on \(\mathbb{N}\) fails even closure (\(3 - 5 \notin \mathbb{N}\)), so it is not even a magma which illustrates just how weak the requirement is.
+      </p>
+
+      <p class="page-paragraph"><b>Semigroup:</b>
+	A magma where the operation is associative. Regrouping parentheses never changes the outcome, so chains like \(a \cdot b \cdot c\) are unambiguous. There is still no identity and no inverses.
+      </p>
+      <div class="math-note">
+        <p class="math-content">
+	  \[(a \cdot b) \cdot c \;=\; a \cdot (b \cdot c)\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+        The positive integers under addition are associative but have no identity (0 is not a positive integer), making them a semigroup but not a monoid.
+      </p>
+
+      <p class="page-paragraph"><b>Monoid:</b>
+	A semigroup that has an identity element \(e\), combining anything with \(e\) leaves it unchanged. This is the backbone of string concatenation, list append, and function composition in computing.
+      </p>
+      <div class="math-note">
+        <p class="math-content">
+	  \[\exists\; e \in S \;:\; a \cdot e \;=\; e \cdot a \;=\; a\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+        For strings, the empty string \(\varepsilon\) is the identity: \(\texttt{"cat"} \mathbin{\|} \varepsilon = \texttt{"cat"}\). Still no inverses so you cannot "un-concatenate".
+      </p>
+
+      <p class="page-paragraph"><b>Group:</b>
+	The central object of abstract algebra. Every element now has an inverse that brings it back to the identity. Groups capture symmetry: rotations, reflections, permutations, and modular arithmetic are all groups.
+      </p>
+      <div class="math-note">
+        <p class="math-content">
+	  \[\forall\; a \in S,\; \exists\; a^{-1} \in S \;:\; a \cdot a^{-1} = e\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+	In \((\mathbb{Z}, +)\), the inverse of \(5\) is \(-5\), and \(5 + (-5) = 0\). The symmetry group of a square \(D_4\) and \((\mathbb{Z}_n, +)\) are also groups.
+      </p>
+
+      <p class="page-paragraph"><b>Abelian Group:</b>
+	A group where order of operands does not matter. Named after <a href="https://en.wikipedia.org/wiki/Niels_Henrik_Abel">Niels Henrik Abel</a>, these groups are "nicer" in the sense they are commutative, every finitely generated abelian group decomposes cleanly into cyclic pieces.
+      </p>
+      <div class="math-note">
+        <p class="math-content">
+	  \[a \cdot b \;=\; b \cdot a \quad \forall\; a, b \in S\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+	The non-zero rationals under multiplication are abelian: \(\tfrac{2}{3} \times \tfrac{5}{7} = \tfrac{5}{7} \times \tfrac{2}{3}\). Contrast with matrix multiplication, which forms a group but is generally non-abelian.
+      </p>
+
+      <p class="page-paragraph"><b>Ring:</b>
+	A set with <em>two</em> operations: addition (forming an abelian group) and multiplication (a semigroup), linked by distributivity. Multiplication need not be commutative, and non-zero elements need not have multiplicative inverses.
+      </p>
+      <div class="math-note">
+        <p class="math-content">
+          \[a \cdot (b + c) = a \cdot b + a \cdot c\]
+          \[(a + b) \cdot c = a \cdot c + b \cdot c\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+	The integers \(\mathbb{Z}\) are a ring: you can always add and multiply, but \(2\) has no multiplicative inverse inside \(\mathbb{Z}\). Polynomial rings \(\mathbb{Z}[x]\) and \(n \times n\) matrices are also rings.
+      </p>
+
+      <p class="page-paragraph"><b>Field:</b>
+	The richest common structure. A commutative ring where every non-zero element has a multiplicative inverse, division is always possible (except by zero). Fields are the natural setting for linear algebra and Galois theory.
+      </p>
+      <div class="math-note">
+        <p class="math-content">
+	  \[\forall\; a \in S,\; a \neq 0 \;\Rightarrow\; \exists\; a^{-1} :\; a \cdot a^{-1} = 1\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+	\(\mathbb{R}\), \(\mathbb{Q}\), and \(\mathbb{C}\) are the classic examples. Finite fields \(\mathbb{F}_p\) (integers mod a prime \(p\)) are fields too and they underpin modern cryptography. The integers \(\mathbb{Z}\) are <em>not</em> a field, since \(2^{-1} \notin \mathbb{Z}\).
+      </p>
+
+      <p class="page-paragraph">
+	It should be clear as day why modern algebra is so powerful. Mathematics has this funny power where it abstracts away unimportant details and what you get is a more flexible, powerful generalization of maths and the world. Which allows us to describe things much better. 
+	<br><br>
+	The integers, the symmetries of a snowflake, and the rotations of three-dimensional space are wildly different things, yet they are all groups. One theorem proved about groups is a theorem proved about all of them at once.
+	\[\text{Object} \;\xrightarrow{\text{abstraction}}\; \text{Structure} \;\xrightarrow{\text{theorem}}\; \text{Universal Truth}\]
+      </p>
+
+      <h2 class="section-title">Algebraic Properties</h2>
+ 
+      <p class="page-paragraph">
+        The <b>Commutative Property</b> states that the <em>order</em> of two operands does not affect the result. You can freely swap terms around the operator without changing the outcome. This holds for both addition and multiplication, but <em>not</em> for subtraction or division.
+      </p>
+      <div class="math-note">
+        <p class="math-content">
+          \[a + b = b + a\]
+          \[a \cdot b = b \cdot a\]
+        </p>
+      </div>
+ 
+      <p class="page-paragraph">
+        The <b>Associative Property</b> states that when adding or multiplying three or more numbers, the way you <em>group</em> the operands (i.e., which pair you evaluate first) does not change the result. This is what allows us to drop parentheses in long sums or products.
+      </p>
+      <div class="math-note">
+        <p class="math-content">
+          \[(a + b) + c = a + (b + c)\]
+          \[(a \cdot b) \cdot c = a \cdot (b \cdot c)\]
+        </p>
+      </div>
+ 
+      <p class="page-paragraph">
+        The <b>Distributive Property</b> links multiplication and addition together. It states that multiplying a number by a sum is the same as multiplying the number by each addend separately and then adding the results. This property is the engine behind expanding brackets in algebra.
+      </p>
+      <div class="math-note">
+        <p class="math-content">
+          \[a \cdot (b + c) = a \cdot b + a \cdot c\]
+          \[a \cdot (b - c) = a \cdot b - a \cdot c\]
+        </p>
+      </div>
+ 
+      <p class="page-paragraph">
+        The <b>Identity Property</b> defines a special element for each operation that leaves any other element unchanged when combined with it. For addition the identity is \(0\); for multiplication it is \(1\).
+      </p>
+      <div class="math-note">
+        <p class="math-content">
+          \[a + 0 = a \quad \text{(additive identity)}\]
+          \[a \cdot 1 = a \quad \text{(multiplicative identity)}\]
+        </p>
+      </div>
+ 
+      <p class="page-paragraph">
+        The <b>Inverse Property</b> states that every element has a counterpart that, when combined with it under the operation, produces the identity element. The additive inverse of \(a\) is \(-a\); the multiplicative inverse of \(a\) (for \(a \neq 0\)) is \(\tfrac{1}{a}\).
+      </p>
+      <div class="math-note">
+        <p class="math-content">
+          \[a + (-a) = 0 \quad \text{(additive inverse)}\]
+          \[a \cdot \frac{1}{a} = 1, \quad a \neq 0 \quad \text{(multiplicative inverse)}\]
+        </p>
+      </div>
+
+      <p class="page-paragraph">
+        The <b>Zero Product Property</b> (also called the <em>Zero Factor Law</em>) states that if the product of two factors is zero, then at least one of those factors must be zero. 
+      </p>
+      <div class="math-note">
+        <p class="math-content">
+          \[\text{If } a \cdot b = 0, \text{ then } a = 0 \text{ or } b = 0\]
+        </p>
+      </div>
+ 
+      <p class="page-paragraph">
+        The <b>Closure Property</b> says that performing an operation on two elements of a set always produces a result that is also within that same set. For example, the integers are closed under addition, adding any two integers always yields another integer.
+      </p>
+      <div class="math-note">
+        <p class="math-content">
+          \[\text{For all } a, b \in S: \quad a + b \in S\]
+          \[\text{For all } a, b \in S: \quad a \cdot b \in S\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+        <b>Example (integers, closed):</b> \(3 + (-7) = -4 \in \mathbb{Z}\) ✓<br>
+        <b>Example (natural numbers, not closed under subtraction):</b> \(3 - 7 = -4 \notin \mathbb{N}\) — the result falls outside the set, so \(\mathbb{N}\) is not closed under subtraction.
+      </p>
+ 
+      <p class="page-paragraph">
+        The <b>Substitution Property</b> states that if two expressions are equal, one can replace the other in any equation or expression without changing its truth or value. 
+      </p>
+      <div class="math-note">
+        <p class="math-content">
+          \[\text{If } a = b, \text{ then } a \text{ may replace } b \text{ in any expression}\]
+        </p>
+      </div>
+ 
+      <p class="page-paragraph">
+        The <b>Properties of Equality</b> describe how the equals sign behaves. There are three core properties:
+      </p>
+      <p class="page-paragraph">
+        <b>Reflexive:</b> Any value is equal to itself.
+      </p>
+      <div class="math-note">
+        <p class="math-content">
+          \[a = a\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+        <b>Symmetric:</b> Equality works in both directions, if \(a = b\) then \(b = a\).
+      </p>
+      <div class="math-note">
+        <p class="math-content">
+          \[\text{If } a = b, \text{ then } b = a\]
+        </p>
+      </div>
+      <p class="page-paragraph">
+        <b>Transitive:</b> Equality chains, if \(a = b\) and \(b = c\), then \(a = c\).
+      </p>
+      <div class="math-note">
+        <p class="math-content">
+          \[\text{If } a = b \text{ and } b = c, \text{ then } a = c\]
+        </p>
+      </div>
+
+       <p class="page-paragraph">
+	These properties may seem obvious, even trivial, but don't be fooled. Look closely and you'll find them everywhere: woven into the patterns of nature, echoing through every corner of mathematics. They are the quiet foundations beneath everything.
+	<br><br>
+	That's how it always goes. Nature hands us a tool, we use it to build a better one, and that one to build something better still, an endless transitive chain of standing on the shoulders of giants.
+      </p>
+ 
+      <h2 class="section-title">Related Articles</h2>
+      <p class="page-paragraph">
+        <a href="../articles.html" class="article-hyperlink">
+          Browse more articles →
+        </a>
+      </p>
+    </main>
+  </div>
+</body>
+</html>
